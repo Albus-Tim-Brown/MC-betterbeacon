@@ -125,7 +125,7 @@ public class Config implements ModInitializer {
 					i++;
 					continue;
 				}
-				map.put(Registries.BLOCK.get(new Identifier(val.substring(0, index))), Double.parseDouble(val.substring(index + 1)));
+				map.put(Registries.BLOCK.get(Identifier.of(val.substring(0, index))), Double.parseDouble(val.substring(index + 1)));
 				i++;
 			} catch (Exception e) {
 				list.remove(i);
@@ -135,7 +135,7 @@ public class Config implements ModInitializer {
 	}
 	public void loadIni(SFIni ini) {
 		setOrResetDouble(ini, "beacon.rangeBase", d -> add = d , add);
-		setOrResetDouble(ini, "beacon.rangeBase", d -> lvl_mul = d , lvl_mul);
+		setOrResetDouble(ini, "beacon.rangePerLevel", d -> lvl_mul = d , lvl_mul);
 		fillBlockRangeMap(ini, "beacon.rangePerBlock", beacon_additive);
 		setOrResetBool(ini, "conduit.addVanillaRange", b -> keep_vanilla = b, keep_vanilla);
 		fillBlockRangeMap(ini, "conduit.rangePerBlock", conduit_additive);

@@ -51,11 +51,15 @@ public class Beacon extends BlockEntity implements BeaconAccessor{
 		return instance.isIn(tag);
 	}
 
-	@ModifyVariable(method = "applyPlayerEffects(Lnet/minecraft/world/World;Lnet/minecraft/util/math/BlockPos;ILnet/minecraft/entity/effect/StatusEffect;Lnet/minecraft/entity/effect/StatusEffect;)V",at=@At(value = "STORE", ordinal = 0))
-	private static double d(double d, World world, BlockPos pos, int beaconLevel){
+	@ModifyVariable(
+			method = "applyPlayerEffects(Lnet/minecraft/world/World;Lnet/minecraft/util/math/BlockPos;ILnet/minecraft/registry/entry/RegistryEntry;Lnet/minecraft/registry/entry/RegistryEntry;)V",
+			at = @At(value = "STORE", ordinal = 0),
+			print = true
+	)
+	private static double d(double d, World world, BlockPos pos, int beaconLevel) {
 		BlockEntity entity = world.getBlockEntity(pos);
 		if (entity instanceof BeaconBlockEntity)
-			return ((BeaconAccessor) entity).getRange()+Config.lvl_mul*beaconLevel;
+			return ((BeaconAccessor) entity).getRange() + Config.lvl_mul * beaconLevel;
 		return d;
 	}
 
