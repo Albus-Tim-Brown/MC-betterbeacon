@@ -53,8 +53,7 @@ public class Beacon extends BlockEntity implements BeaconAccessor{
 
 	@ModifyVariable(
 			method = "applyPlayerEffects(Lnet/minecraft/world/World;Lnet/minecraft/util/math/BlockPos;ILnet/minecraft/registry/entry/RegistryEntry;Lnet/minecraft/registry/entry/RegistryEntry;)V",
-			at = @At(value = "STORE", ordinal = 0),
-			print = true
+			at = @At(value = "STORE", ordinal = 0)
 	)
 	private static double d(double d, World world, BlockPos pos, int beaconLevel) {
 		BlockEntity entity = world.getBlockEntity(pos);
